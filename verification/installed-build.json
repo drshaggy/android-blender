@@ -1,13 +1,21 @@
 {
   "version": [
     1,
-    1,
+    2,
     0
   ],
   "enabled": [
     true,
     true
   ],
+  "source_sha256": "5b8e9fa05d1babf7f21b576edc6d430b2d3695a5c88e5c6545ceef3aa6fe4f35",
   "blender_build_hash": "7dd3aa7e0e95",
-  "source_sha256": "b31fea17053012a129a71cdb13744bfb79ff7d3c6499ea1e9241a12aed01623d"
+  "keymaps": [
+    [
+      "3D View",
+      "view3d.android_back_undo",
+      "ESC",
+      "PRESS"
+    ]
+  ]
 }

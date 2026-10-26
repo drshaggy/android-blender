@@ -1,0 +1,142 @@
+{
+  "startup": {
+    "enabled": [
+      true,
+      true
+    ],
+    "version": [
+      1,
+      2,
+      0
+    ],
+    "keymaps": [
+      [
+        "3D View",
+        "view3d.android_back_undo",
+        "ESC",
+        "PRESS"
+      ]
+    ],
+    "keyboard_open": false
+  },
+  "before_back": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "after_back": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

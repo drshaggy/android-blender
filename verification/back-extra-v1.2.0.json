@@ -1,0 +1,485 @@
+{
+  "two_edits": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "held_back_once": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "active_move": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      2.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform",
+      "TRANSFORM_OT_translate"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "active_move_keyboard": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      2.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform",
+      "TRANSFORM_OT_translate"
+    ],
+    "keyboard_open": true,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "keyboard_closed_move_still_active": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      2.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform",
+      "TRANSFORM_OT_translate"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "second_back_cancels_move": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "before_timeline_escape": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  },
+  "timeline_escape": {
+    "scene": "Codex Back Test",
+    "mode": "OBJECT",
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "location": [
+      1.0,
+      1.0,
+      0.0
+    ],
+    "operators": [
+      "WM_OT_android_touch_transform"
+    ],
+    "keyboard_open": false,
+    "vertices": [
+      [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        -1.0,
+        1.0,
+        1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        -1.0,
+        1.0
+      ],
+      [
+        1.0,
+        1.0,
+        -1.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0
+      ]
+    ]
+  }
+}

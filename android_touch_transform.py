@@ -2,10 +2,10 @@
 bl_info = {
     'name': 'Android Touch Transform Fix',
     'author': 'Connor / Codex',
-    'version': (1, 1, 0),
+    'version': (1, 2, 0),
     'blender': (5, 3, 0),
     'location': '3D View',
-    'description': 'Keep Android touch transforms relative and confirm on finger release',
+    'description': 'Fix Android touch transforms and use Back to undo when idle',
     'category': '3D View',
 }
 import bpy
@@ -18,6 +18,9 @@ _enabled = False
 _generation = object()
 _windows = {}
 _log = None
+_keymaps = []
+_native_lib = None
+_keyboard_is_open = None
 
 def trace(*args):
     if _log:
@@ -66,6 +69,39 @@ def active_transform(window):
             return (op.as_pointer(), op.bl_idname)
     return None
 
+def keyboard_is_open(window):
+    return bool(_keyboard_is_open and _keyboard_is_open(window.as_pointer()))
+
+class VIEW3D_OT_android_back_undo(bpy.types.Operator):
+    bl_idname = 'view3d.android_back_undo'
+    bl_label = 'Android Back: Undo'
+    bl_description = 'Undo when the 3D viewport is idle; active tools keep Escape'
+    bl_options = {'INTERNAL'}
+
+    @classmethod
+    def poll(cls, context):
+        if (not _enabled or not context.window or not context.area
+                or context.area.type != 'VIEW_3D' or not context.region
+                or context.region.type != 'WINDOW'):
+            return False
+        # Background touch handlers are ours; any other modal operator owns
+        # cancellation, including Knife, box select, and non-transform tools.
+        return not any(op.bl_idname != 'WM_OT_android_touch_transform'
+                       for op in context.window.modal_operators)
+
+    def invoke(self, context, event):
+        if event.is_repeat:
+            return {'CANCELLED'}
+        return self.execute(context)
+
+    def execute(self, context):
+        if keyboard_is_open(context.window):
+            bpy.ops.wm.virtual_keyboard_toggle()
+            return {'FINISHED'}
+        if bpy.ops.ed.undo.poll():
+            return bpy.ops.ed.undo()
+        return {'CANCELLED'}
+
 class WM_OT_android_touch_transform(bpy.types.Operator):
     bl_idname = 'wm.android_touch_transform'
     bl_label = 'Android Touch Transform Input'
@@ -102,6 +138,12 @@ class WM_OT_android_touch_transform(bpy.types.Operator):
             return {'CANCELLED', 'PASS_THROUGH'}
 
     def handle_event(self, context, event):
+        # The port's native keyboard is drawn outside Blender regions. Query
+        # its exported read-only accessor rather than infer visibility from taps.
+        if (event.type == 'ESC' and event.value == 'PRESS'
+                and not event.is_repeat and keyboard_is_open(context.window)):
+            bpy.ops.wm.virtual_keyboard_toggle()
+            return {'RUNNING_MODAL'}
         current = active_transform(context.window)
         if current != self.active:
             self.active = current
@@ -168,14 +210,28 @@ def on_load(_):
     _windows.clear()
 
 def register():
-    global _enabled, _generation
+    global _enabled, _generation, _native_lib, _keyboard_is_open
     if (sys.platform != 'android' or bpy.app.build_hash != SUPPORTED_BUILD
             or ctypes.sizeof(ctypes.c_void_p) != 8):
         raise RuntimeError('This touch patch supports only Android Blender build 7dd3aa7e0e95')
+    # Exact signature from this build: bool(const blender::wmWindow *).
+    # Resolve before registering anything so a missing symbol fails cleanly.
+    _native_lib = ctypes.CDLL('libblender.so')
+    _keyboard_is_open = getattr(
+        _native_lib, '_ZN7blender27WM_virtual_keyboard_is_openEPKNS_8wmWindowE')
+    _keyboard_is_open.argtypes = [ctypes.c_void_p]
+    _keyboard_is_open.restype = ctypes.c_bool
     _generation = object()
     _windows.clear()
+    bpy.utils.register_class(VIEW3D_OT_android_back_undo)
     bpy.utils.register_class(WM_OT_android_touch_transform)
     _enabled = True
+    keyconfig = bpy.context.window_manager.keyconfigs.addon
+    if keyconfig:
+        keymap = keyconfig.keymaps.new(name='3D View', space_type='VIEW_3D')
+        item = keymap.keymap_items.new('view3d.android_back_undo', 'ESC', 'PRESS',
+                                      head=True, repeat=False)
+        _keymaps.append((keymap, item))
     bpy.app.handlers.load_post.append(on_load)
     bpy.app.timers.register(ensure_handlers,first_interval=.5,persistent=True)
 
@@ -183,8 +239,12 @@ def unregister():
     global _enabled
     _enabled = False
     _windows.clear()
+    for keymap, item in _keymaps:
+        keymap.keymap_items.remove(item)
+    _keymaps.clear()
     if on_load in bpy.app.handlers.load_post:
         bpy.app.handlers.load_post.remove(on_load)
     if bpy.app.timers.is_registered(ensure_handlers):
         bpy.app.timers.unregister(ensure_handlers)
     bpy.utils.unregister_class(WM_OT_android_touch_transform)
+    bpy.utils.unregister_class(VIEW3D_OT_android_back_undo)
