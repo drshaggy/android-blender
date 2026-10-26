@@ -1,0 +1,13 @@
+{
+  "version": [
+    1,
+    1,
+    0
+  ],
+  "enabled": [
+    true,
+    true
+  ],
+  "blender_build_hash": "7dd3aa7e0e95",
+  "source_sha256": "b31fea17053012a129a71cdb13744bfb79ff7d3c6499ea1e9241a12aed01623d"
+}
